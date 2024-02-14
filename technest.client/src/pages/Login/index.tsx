@@ -5,10 +5,12 @@ import { IForm, setForm } from "../../store/login";
 import Input from "../../components/Input";
 import { ChangeEvent, useState } from "react";
 import { LoginService } from "../../service";
+import { useNavigate } from "react-router";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function Login({ formulario, setForm }: IInfo) {
   const [blocked, setBlocked] = useState(false);
+  const navigate = useNavigate();
 
   const handleOnChange = (event: ChangeEvent<any>) => {
     setForm({ [event.target.name]: event.target.value });
@@ -33,7 +35,9 @@ function Login({ formulario, setForm }: IInfo) {
       <div className="flex justify-center items-center">
         <div className="md:w-1/3 sm:w-2/3 h-[400px] bg-slate-800 rounded-md shadow-md">
           <form className="flex flex-col gap-4 p-8">
-            <h1 className="text-3xl font-bold text-zinc-300">Faça seu login</h1>
+            <h1 className="text-3xl flex justify-center font-bold text-zinc-300">
+              Faça seu login
+            </h1>
             <Input
               label={"Login"}
               name={"login"}
@@ -51,10 +55,16 @@ function Login({ formulario, setForm }: IInfo) {
             <button
               disabled={blocked}
               onClick={handleOnSubmit}
-              className="bg-teal-700 disabled:cursor-not-allowed disabled:bg-opacity-30 hover:bg-teal-800 duration-100 rounded-md p-2 font-bold text-lg text-white mt-5"
+              className="bg-teal-600 disabled:cursor-not-allowed disabled:bg-opacity-50 hover:bg-teal-800 duration-100 rounded-md p-2 font-bold text-lg text-white mt-5"
             >
               Entrar
             </button>
+            <p className="text-zinc-200 flex justify-center gap-1">
+              Não possui uma conta?{" "}
+              <a href="" onClick={() => navigate("/registrar")} className="text-teal-500 brightness-125">
+                Clique aqui
+              </a>
+            </p>
           </form>
         </div>
       </div>

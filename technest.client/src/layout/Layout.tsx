@@ -29,8 +29,16 @@ function Layout({ formulario, setForm }: IInfo) {
         mainContent={undefined}
         endContent={
           formulario.id > 0 ? (
-            <div className="flex gap-5">
+            <div className="flex gap-7">
               <p className="text-teal-500 brightness-200">Olá, {formulario.nome}!</p>
+              <a
+                href=""
+                onClick={() => {
+                  navigate(`/usuario/${formulario.id}`);
+                }}
+              >
+                Perfil
+              </a>
               <a
                 href=""
                 onClick={() => {

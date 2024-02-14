@@ -26,8 +26,7 @@ namespace TechNest.Server.Repositories
                 Nome = x.Nome,
                 Email = x.Email,
                 Login = x.Login,
-                Senha = x.Senha,
-                Role = x.Role,
+                Senha = "********",
             }).FirstOrDefaultAsync();
         }
 
