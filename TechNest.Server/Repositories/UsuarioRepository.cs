@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TechNest.Communication.DTOs.Request;
 using TechNest.Communication.DTOs.Response;
 using TechNest.Server.Infraestrutura;
 using TechNest.Server.Models;
 using TechNest.Server.Repositories.Interfaces;
+using TechNest.Server.Utils.Enums;
 
 namespace TechNest.Server.Repositories
 {
@@ -37,6 +39,17 @@ namespace TechNest.Server.Repositories
             .FirstOrDefaultAsync();
 
             return usuario;
+        }
+
+        public async Task<long> CreateAsync(UsuarioReq request)
+        {
+            var usuario = Usuario.Criar(request.Nome, request.Email, request.Login, request.Senha, Roles.User);
+
+            _context.Usuarios.Add(usuario);
+
+            await _context.SaveChangesAsync();
+
+            return usuario.Id;
         }
     }
 }

@@ -1,3 +1,10 @@
+export interface UsuarioReq {
+  nome: string;
+  email: string;
+  login: string;
+  senha: string;
+}
+
 export interface GetUSuarioResp {
   id: number;
   nome: string;

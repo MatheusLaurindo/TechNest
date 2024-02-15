@@ -36,5 +36,17 @@ namespace TechNest.Server.Controllers
                 token = token
             };
         }
+
+        [HttpPost]
+        [Route("cadastro")]
+        public async Task<IActionResult> Cadatrar([FromBody] UsuarioReq usuario)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _repository.CreateAsync(usuario);
+
+            return Ok(result);
+        }
     }
 }
