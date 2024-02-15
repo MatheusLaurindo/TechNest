@@ -33,7 +33,7 @@ export default function Input({
   );
 }
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps {
   label: string;
   name: string;
   type: HTMLInputTypeAttribute;

@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   content: {
-    id: 0,
+    id: "0",
     nome: "",
     role: "",
   },
@@ -21,7 +21,7 @@ export const slice = createSlice({
 
 interface IState {
   content: {
-    id: number;
+    id: string;
     nome: string;
     role: string;
   };

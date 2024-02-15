@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 export default function Error() {
   const navigate = useNavigate();
   return (
-    <>
+    <div>
       <div className="flex items-center justify-center h-screen">
         <div>
           <div className="flex flex-col items-center">
@@ -25,6 +25,6 @@ export default function Error() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
