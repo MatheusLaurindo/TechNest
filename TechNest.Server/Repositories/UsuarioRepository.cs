@@ -28,7 +28,7 @@ namespace TechNest.Server.Repositories
                 Nome = x.Nome,
                 Email = x.Email,
                 Login = x.Login,
-                Senha = "********",
+                Senha = x.Senha
             }).FirstOrDefaultAsync();
         }
 
@@ -46,6 +46,21 @@ namespace TechNest.Server.Repositories
             var usuario = Usuario.Criar(request.Nome, request.Email, request.Login, request.Senha, Roles.User);
 
             _context.Usuarios.Add(usuario);
+
+            await _context.SaveChangesAsync();
+
+            return usuario.Id;
+        }
+
+        public async Task<long> UpdateAsync(UsuarioReq request)
+        {
+            var usuario = _context.Usuarios
+                .FirstOrDefault(u => u.Id == request.Id);
+
+            usuario.SetNome(request.Nome);
+            usuario.SetEmail(request.Email);
+            usuario.SetLogin(request.Login);
+            usuario.SetSenha(request.Senha);
 
             await _context.SaveChangesAsync();
 

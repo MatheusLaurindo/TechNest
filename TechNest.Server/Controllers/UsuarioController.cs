@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TechNest.Communication.DTOs.Request;
 using TechNest.Server.Repositories.Interfaces;
 
 namespace TechNest.Server.Controllers
@@ -25,6 +26,18 @@ namespace TechNest.Server.Controllers
                 return NotFound(new { message = "Usuário não encontrado" });
 
             return Ok(usuario);
+        }
+
+        [HttpPut("editar/{id}")]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> Update([FromBody] UsuarioReq usuarioReq)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = await _repository.UpdateAsync(usuarioReq);
+
+            return Ok(result);
         }
     }
 }

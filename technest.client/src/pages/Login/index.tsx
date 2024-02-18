@@ -7,7 +7,7 @@ import { ChangeEvent, useState } from "react";
 import { LoginService } from "../../service";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function Login({ formulario, setForm }: IInfo) {
@@ -28,7 +28,7 @@ function Login({ formulario, setForm }: IInfo) {
         window.location.href = "/";
       })
       .catch(() => {
-        toast("Usuário ou senha inválidos", { type: "error" })
+        toast("Usuário ou senha inválidos", { type: "error" });
         setBlocked(false);
       });
   };
@@ -64,7 +64,11 @@ function Login({ formulario, setForm }: IInfo) {
             </button>
             <p className="text-zinc-200 flex justify-center gap-1">
               Não possui uma conta?{" "}
-              <a href="" onClick={() => navigate("/registrar")} className="text-teal-500 brightness-125">
+              <a
+                href=""
+                onClick={() => navigate("/registrar")}
+                className="text-teal-500 brightness-125"
+              >
                 Clique aqui
               </a>
             </p>

@@ -19,7 +19,7 @@ function App() {
               path="/usuario/:id"
               element={
                 <PrivateRoute>
-                  <Formulario />
+                    <Formulario />
                 </PrivateRoute>
               }
             />

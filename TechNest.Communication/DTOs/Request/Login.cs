@@ -11,6 +11,8 @@ namespace TechNest.Communication.DTOs.Request
     public sealed class UsuarioReq
     {
         [Required]
+        public long Id { get; set; }
+        [Required]
         public string Nome { get; set; }
         [Required]
         public string Email { get; set; }

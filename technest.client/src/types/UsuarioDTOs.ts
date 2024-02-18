@@ -1,4 +1,5 @@
 export interface UsuarioReq {
+  id: number;
   nome: string;
   email: string;
   login: string;

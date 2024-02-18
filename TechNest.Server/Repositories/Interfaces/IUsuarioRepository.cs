@@ -9,5 +9,6 @@ namespace TechNest.Server.Repositories.Interfaces
         Task<GetUsuarioResp> GetByIdAsync(long id);
         Task<Usuario> GetByLoginAsync(string login, string senha);
         Task<long> CreateAsync(UsuarioReq usuario);
+        Task<long> UpdateAsync(UsuarioReq usuario);
     }
 }

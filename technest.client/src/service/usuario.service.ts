@@ -16,6 +16,13 @@ const service = {
       url: "/cadastro",
       data: usuario,
     }),
+
+  editar: async (id: number, usuario: UsuarioReq): Promise<number> =>
+    await apiRequest<number>({
+      method: "PUT",
+      url: baseUrl + `/editar/${id}`,
+      data: usuario,
+    }),
 };
 
 export default service;
