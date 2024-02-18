@@ -1,16 +1,31 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes";
-import { privateRouter } from "./routes/private/PrivateRoutes";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./layout/Layout";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Registro from "./pages/Registro";
+import PrivateRoute from "./routes/PrivateRoutes";
+import Formulario from "./pages/Usuario/Formulario";
 
 function App() {
-  const token = localStorage.getItem("jwt_token");
   return (
     <>
-      {token ? (
-        <RouterProvider router={privateRouter} />
-      ) : (
-        <RouterProvider router={router} />
-      )}
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registrar" element={<Registro />} />
+            <Route
+              path="/usuario/:id"
+              element={
+                <PrivateRoute>
+                  <Formulario />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </>
   );
 }

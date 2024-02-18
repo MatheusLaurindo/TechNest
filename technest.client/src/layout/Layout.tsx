@@ -1,13 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 import Navbar from "../components/Navbar";
 import logo from "../assets/logo.png";
-import { Outlet, useNavigate } from "react-router";
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { IForm, setForm } from "../store/perfil";
 import { RootState } from "../store";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router";
+import { ToastContainer } from "react-toastify";
 
-function Layout({ formulario, setForm }: IInfo) {
+function Layout({ formulario, setForm, children }: IInfo) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,7 +31,9 @@ function Layout({ formulario, setForm }: IInfo) {
         endContent={
           formulario.id !== "0" ? (
             <div className="flex gap-7">
-              <p className="text-teal-500 brightness-200">Olá, {formulario.nome}!</p>
+              <p className="text-teal-500 brightness-200">
+                Olá, {formulario.nome}!
+              </p>
               <a
                 href=""
                 onClick={() => {
@@ -43,7 +46,7 @@ function Layout({ formulario, setForm }: IInfo) {
                 href=""
                 onClick={() => {
                   localStorage.removeItem("jwt_token");
-                  navigate("/")
+                  navigate("/");
                 }}
               >
                 Sair
@@ -57,7 +60,7 @@ function Layout({ formulario, setForm }: IInfo) {
         }
       />
       <div className="w-full h-full flex justify-center p-3">
-        <Outlet />
+        {children} <ToastContainer />
       </div>
     </div>
   );
@@ -65,6 +68,7 @@ function Layout({ formulario, setForm }: IInfo) {
 
 interface IProps {
   formulario: IForm;
+  children: ReactNode;
 }
 
 interface IDispatchProps {

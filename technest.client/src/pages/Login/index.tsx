@@ -6,6 +6,8 @@ import Input from "../../components/Input";
 import { ChangeEvent, useState } from "react";
 import { LoginService } from "../../service";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 function Login({ formulario, setForm }: IInfo) {
@@ -25,8 +27,9 @@ function Login({ formulario, setForm }: IInfo) {
         localStorage.setItem("jwt_token", response.token);
         window.location.href = "/";
       })
-      .catch((error) => {
-        alert(error + ": Usuário ou senha inválidos");
+      .catch(() => {
+        toast("Usuário ou senha inválidos", { type: "error" })
+        setBlocked(false);
       });
   };
 

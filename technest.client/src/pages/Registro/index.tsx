@@ -5,9 +5,12 @@ import { IForm, setForm } from "../../store/usuario";
 import { RootState } from "../../store";
 import { connect } from "react-redux";
 import { UsuarioService } from "../../service";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 function Registro({ formulario, setForm }: IInfo) {
   const navigate = useNavigate();
+  const [blocked, setBlocked] = useState(false);
 
   const handleOnChange = (event) => {
     setForm({ [event.target.name]: event.target.value });
@@ -15,13 +18,20 @@ function Registro({ formulario, setForm }: IInfo) {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
+    setBlocked(true);
 
     await UsuarioService.cadastrar(formulario)
       .then(() => {
-        alert("Usuário cadastrado com sucesso!");
+        toast("Usuário cadastrado com sucesso. Faça seu login para continuar", { type: "success" });
         navigate("/login");
       })
-      .catch((error) => alert(error));
+      .catch(() => {
+        toast(
+          "Um erro ocorreu ao cadastrar o usuário. Por favor, cheque os campos e tente novamente",
+          { type: "error" }
+        );
+        setBlocked(false);
+      });
   };
 
   return (
@@ -63,6 +73,7 @@ function Registro({ formulario, setForm }: IInfo) {
               />
             </div>
             <button
+              disabled={blocked}
               onClick={handleOnSubmit}
               className="bg-teal-600 disabled:cursor-not-allowed disabled:bg-opacity-50 hover:bg-teal-800 duration-100 rounded-md p-2 font-bold text-lg text-white mt-5"
             >
