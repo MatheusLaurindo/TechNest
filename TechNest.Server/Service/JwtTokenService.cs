@@ -25,7 +25,7 @@ namespace TechNest.Server.Service
                     new Claim(ClaimTypes.Name, usuario.Nome),
                     new Claim(ClaimTypes.Role, usuario.Role.ToString()),
                 }),
-                Expires = DateTime.UtcNow.AddHours(8),
+                Expires = DateTime.UtcNow.AddHours(3),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             };
 

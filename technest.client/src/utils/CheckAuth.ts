@@ -8,6 +8,7 @@ export const checkAuth = () => {
   if (data.exp > Date.now() / 1000) {
     return true;
   } else {
+    localStorage.removeItem("jwt_token");
     return false;
   }
 };
