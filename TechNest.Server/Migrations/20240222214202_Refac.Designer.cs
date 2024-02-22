@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechNest.Server.Infraestrutura;
 
@@ -10,9 +11,11 @@ using TechNest.Server.Infraestrutura;
 namespace TechNest.Server.Migrations
 {
     [DbContext(typeof(TechNestDbContext))]
-    partial class TechNestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240222214202_Refac")]
+    partial class Refac
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,12 +11,10 @@ namespace TechNest.Server.Infraestrutura
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Artigo> Artigos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsuarioMapping());
-            modelBuilder.ApplyConfiguration(new ArtigoMapping());
 
             base.OnModelCreating(modelBuilder);
         }

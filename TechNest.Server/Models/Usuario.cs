@@ -10,11 +10,9 @@ namespace TechNest.Server.Models
         public string Login { get; protected set; }
         public string Senha { get; protected set; }
         public string Role { get; set; }
-        public List<Artigo> Artigos { get; protected set; }
 
         protected Usuario() : base()
         {
-            Artigos = new List<Artigo>();
         }
 
         protected Usuario(string nome, string email, string login, string senha, Roles role) : this()
@@ -24,6 +22,11 @@ namespace TechNest.Server.Models
             SetLogin(login);
             SetSenha(senha);
             SetRole(role);
+        }
+
+        private void SetRole(Roles role)
+        {
+            Role = role.ToString();
         }
 
         public void SetNome(string nome)
@@ -44,11 +47,6 @@ namespace TechNest.Server.Models
         public void SetSenha(string senha)
         {
             Senha = senha ?? throw new InvalidOperationException(nameof(senha));
-        }
-
-        public void SetRole(Roles role)
-        {
-            Role = role.ToString();
         }
 
         public static Usuario Criar(string nome, string email, string login, string senha, Roles role)

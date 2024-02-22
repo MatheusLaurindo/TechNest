@@ -12,26 +12,23 @@ namespace TechNest.Server.Infraestrutura.Mapping
             builder.Property(u => u.Nome)
                 .HasMaxLength(100)
                 .IsRequired();
-
-            builder.HasIndex(u => u.Email)
-                .IsUnique();
             builder.Property(u => u.Email)
                 .HasMaxLength(254)
                 .IsRequired();
-
-            builder.HasIndex(u => u.Login)
-                .IsUnique();
-
             builder.Property(u => u.Login)
                 .HasMaxLength(50)
                 .IsRequired();
-
             builder.Property(u => u.Senha)
                 .HasMaxLength(16)
                 .IsRequired();
-
             builder.Property(u => u.Role)
                 .IsRequired();
+
+
+            builder.HasIndex(u => u.Login)
+                .IsUnique();
+            builder.HasIndex(u => u.Email)
+               .IsUnique();
         }
     }
 }
