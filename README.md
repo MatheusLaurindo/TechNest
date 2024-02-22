@@ -9,9 +9,8 @@ Frontend em React com TypeScript: A interface de usuário é construída em Reac
 Como Usar:
 Clonando o Repositório:
 
-bash
-Copy code
-git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/MatheusLaurindo/TechNest.git)
+git clone https://github.com/MatheusLaurindo/TechNest.git
+
 Backend - API em C# .NET:
 
 Navegue até o diretório backend e abra a solução no Visual Studio ou utilize o dotnet CLI para rodar a aplicação.
