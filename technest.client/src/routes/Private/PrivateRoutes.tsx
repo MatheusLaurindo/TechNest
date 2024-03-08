@@ -1,5 +1,5 @@
 import { Navigate } from "react-router";
-import { checkAuth } from "../utils/CheckAuth";
+import { checkAuth } from "../../utils/CheckAuth";
 
 export default function PrivateRoute({ children }) {
   const isAuthenticated = checkAuth();

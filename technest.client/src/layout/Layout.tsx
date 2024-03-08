@@ -1,14 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 import Navbar from "../components/Navbar";
 import logo from "../assets/logo.png";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import { IForm, setForm } from "../store/perfil";
 import { RootState } from "../store";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { ToastContainer } from "react-toastify";
 
-function Layout({ formulario, setForm, children }: IInfo) {
+function Layout({ formulario, setForm }: IInfo) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ function Layout({ formulario, setForm, children }: IInfo) {
         }
       />
       <div className="w-full h-full flex justify-center p-3">
-        {children} <ToastContainer />
+        <Outlet /> <ToastContainer />
       </div>
     </div>
   );
@@ -68,7 +68,6 @@ function Layout({ formulario, setForm, children }: IInfo) {
 
 interface IProps {
   formulario: IForm;
-  children: ReactNode;
 }
 
 interface IDispatchProps {
